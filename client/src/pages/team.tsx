@@ -13,8 +13,9 @@ import imgIluminacion  from "@/assets/team-icons/iluminacion.png";
 import imgMarketing    from "@/assets/team-icons/marketing.png";
 import imgPartners     from "@/assets/team-icons/partners.png";
 import imgElectronica  from "@/assets/team-icons/electronica.png";
+import imgPlaceholder   from "@/assets/logo.png";
 
-const placeholder = "/src/assets/logo.png";
+const placeholder = imgPlaceholder;
 
 const team2224 = [
   {
