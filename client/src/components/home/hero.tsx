@@ -5,8 +5,28 @@ import Countdown from "./countdown";
 import { useLanguage } from "@/lib/use-language";
 import Foto4 from "@/assets/foto4.png";
 
+function HeroSubtitle({ language }: { language: string }) {
+  const hi = "text-yellow-300 font-semibold";
+  if (language === "en") {
+    return (
+      <>
+        Driving the next generation of{" "}
+        <span className={hi}>solar-powered mobility</span> with a commitment to{" "}
+        <span className={hi}>sustainable innovation</span> and cutting-edge technology.
+      </>
+    );
+  }
+  return (
+    <>
+      Impulsando la próxima generación de{" "}
+      <span className={hi}>movilidad solar</span> con un compromiso con la{" "}
+      <span className={hi}>innovación sostenible</span> y tecnología de vanguardia.
+    </>
+  );
+}
+
 export default function Hero() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
 
   return (
     <div className="relative min-h-[90vh] flex flex-col bg-[#101217]">
@@ -64,7 +84,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: -15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-5xl md:text-6xl font-black text-white tracking-tight leading-tight mb-4"
+            className="text-4xl sm:text-5xl md:text-6xl font-black text-white tracking-tight leading-tight mb-4"
           >
             {t("hero.title")}
           </motion.h1>
@@ -84,15 +104,10 @@ export default function Hero() {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.45 }}
-            className="text-base md:text-lg mb-8 text-white/55 leading-relaxed"
-            dangerouslySetInnerHTML={{
-              __html: t("hero.subtitle")
-                .replace("solar-powered mobility", `<span class="text-yellow-300 font-semibold">solar-powered mobility</span>`)
-                .replace("sustainable innovation", `<span class="text-yellow-300 font-semibold">sustainable innovation</span>`)
-                .replace("movilidad solar", `<span class="text-yellow-300 font-semibold">movilidad solar</span>`)
-                .replace("innovación sostenible", `<span class="text-yellow-300 font-semibold">innovación sostenible</span>`)
-            }}
-          />
+            className="text-base md:text-lg mb-8 text-white/60 leading-relaxed"
+          >
+            <HeroSubtitle language={language} />
+          </motion.p>
 
           {/* Buttons */}
           <motion.div

@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/lib/use-language";
+import PageHeader from "@/components/shared/page-header";
+import DecorativeDivider from "@/components/shared/decorative-divider";
 
 import imgDireccion    from "@/assets/team-icons/direccion.png";
 import imgEstructura   from "@/assets/team-icons/estructura.png";
@@ -182,7 +184,11 @@ const team2426 = [
 
 function scrollToSection(id: string) {
   const el = document.getElementById(id);
-  if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+  if (el) {
+    const navbarHeight = 90;
+    const top = el.getBoundingClientRect().top + window.scrollY - navbarHeight;
+    window.scrollTo({ top, behavior: "smooth" });
+  }
 }
 
 export default function Team() {
@@ -195,30 +201,7 @@ export default function Team() {
   return (
     <div className="min-h-screen bg-[#0d0f14] text-white">
 
-      {/* Page header */}
-      <div className="relative overflow-hidden py-20 bg-[#0d0f14]">
-        <div className="absolute inset-0 dot-grid opacity-40 pointer-events-none" />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#0d0f14] pointer-events-none" />
-        <div className="container relative z-10 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
-          >
-            <h1 className="text-5xl font-black text-white mb-4 tracking-tight">
-              {t('team.title')}
-            </h1>
-            <div className="flex items-center justify-center gap-2 mb-6">
-              <div className="h-[3px] w-10 rounded-full bg-yellow-500" />
-              <div className="h-[3px] w-5 rounded-full bg-yellow-500/50" />
-              <div className="h-[3px] w-2 rounded-full bg-yellow-500/25" />
-            </div>
-            <p className="text-lg text-white/60 max-w-2xl mx-auto leading-relaxed">
-              {t('team.subtitle')}
-            </p>
-          </motion.div>
-        </div>
-      </div>
+      <PageHeader title={t('team.title')} subtitle={t('team.subtitle')} centered />
 
       <div className="container pb-16">
 
@@ -263,7 +246,7 @@ export default function Team() {
                 {t('team.departments').toUpperCase()}
               </h2>
 
-              <div className="flex flex-wrap justify-center gap-8">
+              <div className="flex flex-nowrap md:flex-wrap overflow-x-auto md:overflow-visible scrollbar-hide justify-start md:justify-center gap-4 sm:gap-6 pb-2 md:pb-0 px-1">
                 {subsystems.map((sub, i) => {
                   const Icon = (sub as any).icon;
                   const iconImg = (sub as any).iconImg;
@@ -274,20 +257,20 @@ export default function Team() {
                       initial={{ opacity: 0, y: 16 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.4, delay: 0.05 * i }}
-                      className="group flex flex-col items-center gap-3 cursor-pointer"
+                      className="group flex flex-col items-center gap-2 cursor-pointer"
                     >
-                      <div className="w-36 h-36 rounded-2xl flex items-center justify-center bg-white/5 border border-white/15 group-hover:border-yellow-500/60 group-hover:bg-yellow-500/10 transition-all duration-300">
+                      <div className="w-20 h-20 sm:w-28 sm:h-28 md:w-36 md:h-36 rounded-2xl flex items-center justify-center bg-white/5 border border-white/15 group-hover:border-yellow-500/60 group-hover:bg-yellow-500/10 transition-all duration-300">
                         {iconImg ? (
                           <img
                             src={iconImg}
                             alt={(sub as any).labelKey ? t((sub as any).labelKey) : sub.label}
-                            className="w-20 h-20 object-contain mix-blend-screen [filter:invert(1)_opacity(0.55)] group-hover:[filter:invert(1)_sepia(1)_saturate(8)_hue-rotate(5deg)] transition-all duration-300"
+                            className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 object-contain mix-blend-screen [filter:invert(1)_opacity(0.55)] group-hover:[filter:invert(1)_sepia(1)_saturate(8)_hue-rotate(5deg)] transition-all duration-300"
                           />
                         ) : (
-                          <Icon className="w-16 h-16 text-white/60 group-hover:text-yellow-400 transition-colors duration-300" />
+                          <Icon className="w-10 h-10 sm:w-14 sm:h-14 md:w-16 md:h-16 text-white/60 group-hover:text-yellow-400 transition-colors duration-300" />
                         )}
                       </div>
-                      <span className="text-sm text-white/50 group-hover:text-yellow-400 transition-colors duration-300 tracking-wide text-center max-w-[100px]">
+                      <span className="text-xs sm:text-sm text-white/50 group-hover:text-yellow-400 transition-colors duration-300 tracking-wide text-center max-w-[80px] sm:max-w-[100px]">
                         {(sub as any).labelKey ? t((sub as any).labelKey) : sub.label}
                       </span>
                     </motion.button>
@@ -332,9 +315,8 @@ export default function Team() {
                         </div>
                         <p className="text-xs uppercase tracking-[0.3em] text-white/40 mb-1">{t('team.department')}</p>
                         <h2 className="text-3xl font-black text-white tracking-tight">{(sub as any).labelKey ? t((sub as any).labelKey) : sub.label}</h2>
-                        <div className="flex items-center gap-2 mt-3">
-                          <div className="h-[2px] w-8 rounded-full bg-yellow-500" />
-                          <div className="h-[2px] w-4 rounded-full bg-yellow-500/50" />
+                        <div className="mt-3">
+                          <DecorativeDivider centered />
                         </div>
                       </div>
 
@@ -347,27 +329,47 @@ export default function Team() {
                             viewport={{ once: true }}
                             transition={{ duration: 0.4, delay: mIdx * 0.08 }}
                           >
-                            <a
-                              href={member.linkedin}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="group flex flex-col items-center gap-3 w-40"
-                            >
-                              <div className="relative w-28 h-28 rounded-full ring-2 ring-white/10 group-hover:ring-yellow-500/50 transition-all duration-300 overflow-hidden">
-                                <img
-                                  src={member.image}
-                                  alt={member.name}
-                                  loading="lazy"
-                                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                                />
+                            {member.linkedin && member.linkedin !== "#" ? (
+                              <a
+                                href={member.linkedin}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label={`LinkedIn de ${member.name}`}
+                                className="group flex flex-col items-center gap-3 w-36"
+                              >
+                                <div className="relative w-24 h-24 sm:w-28 sm:h-28 rounded-full ring-2 ring-white/10 group-hover:ring-yellow-500/50 transition-all duration-300 overflow-hidden">
+                                  <img
+                                    src={member.image}
+                                    alt={member.name}
+                                    loading="lazy"
+                                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                                  />
+                                </div>
+                                <div className="text-center">
+                                  <p className="text-sm font-bold text-white group-hover:text-yellow-400 transition-colors duration-300 leading-tight">
+                                    {member.name}
+                                  </p>
+                                  <p className="text-xs text-white/55 mt-1">{member.role}</p>
+                                </div>
+                              </a>
+                            ) : (
+                              <div className="flex flex-col items-center gap-3 w-36">
+                                <div className="relative w-24 h-24 sm:w-28 sm:h-28 rounded-full ring-2 ring-white/10 overflow-hidden">
+                                  <img
+                                    src={member.image}
+                                    alt={member.name}
+                                    loading="lazy"
+                                    className="w-full h-full object-cover"
+                                  />
+                                </div>
+                                <div className="text-center">
+                                  <p className="text-sm font-bold text-white leading-tight">
+                                    {member.name}
+                                  </p>
+                                  <p className="text-xs text-white/55 mt-1">{member.role}</p>
+                                </div>
                               </div>
-                              <div className="text-center">
-                                <p className="text-sm font-bold text-white group-hover:text-yellow-400 transition-colors duration-300 leading-tight">
-                                  {member.name}
-                                </p>
-                                <p className="text-xs text-white/50 mt-1">{member.role}</p>
-                              </div>
-                            </a>
+                            )}
                           </motion.div>
                         ))}
                       </div>

@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, ReactNode } from 'react';
+import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 
 type Language = 'es' | 'en';
 
@@ -85,7 +85,7 @@ const translations = {
     'partners.title': 'Our Partners',
     'partners.subtitle': 'Collaboration is key to our success. Meet the organizations that support our mission.',
     'partners.becomePartner.title': 'Become a Partner',
-    'partners.becomePartner.text': 'Join us in our mission to advance sustainable transportation technology. Partner with HeliosRace UPV and be part of the future of solar movility.',
+    'partners.becomePartner.text': 'Join us in our mission to advance sustainable transportation technology. Partner with HeliosRace UPV and be part of the future of solar mobility.',
     'contact.title': 'Contact Us',
     'contact.subtitle': 'Have questions or want to learn more about HeliosRace UPV? Get in touch with us.',
     'contact.nameLabel': 'Name',
@@ -193,6 +193,7 @@ const translations = {
     'about.competition.text': 'La ILumen European Solar Challenge (IESC) busca el desarrollo de la tecnología de propulsión de vehículos por medio de energía de procedencia solar, mediante la competitividad amistosa entre los equipos participantes. Durante los días 22 y 23 de agosto de 2024, el equipo de HeliosRace UPV tuvo el placer y oportunidad de participar junto a su primer prototipo en el circuito Zolder en Heusden-Zolder, Bélgica.',
     'about.vehicles.title': 'Conoce nuestros vehículos',
     'vehicles.prototype1.title': 'Prototipo 1',
+    'vehicles.prototype1.description1': 'El primero de todos. Cuenta con un chasis ligero y un motor eléctrico de alto rendimiento.',
     'about.vehicles.prototype1': 'Nuestro primer prototipo. El comienzo de un legado.',
     'about.vehicles.prototype2': 'Nuestra segunda apuesta. El futuro de Helios Race UPV.',
     'about.findUs.title': 'Encuéntranos',
@@ -275,8 +276,22 @@ const translations = {
 
 const LanguageContext = createContext<LanguageContextType | null>(null);
 
+function getInitialLanguage(): Language {
+  try {
+    const stored = localStorage.getItem('helios-language');
+    if (stored === 'en' || stored === 'es') return stored;
+  } catch {}
+  const nav = navigator.language.split('-')[0];
+  return nav === 'en' ? 'en' : 'es';
+}
+
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [language, setLanguage] = useState<Language>('es');
+  const [language, setLanguageState] = useState<Language>(getInitialLanguage);
+
+  const setLanguage = (lang: Language) => {
+    setLanguageState(lang);
+    try { localStorage.setItem('helios-language', lang); } catch {}
+  };
 
   const t = (key: string): string => {
     return translations[language][key as keyof typeof translations[typeof language]] || key;

@@ -18,6 +18,29 @@ import logoSiemens from "@/assets/LOGOSIEMENS.png";
 import logoPowerElectronics from "@/assets/LOGOPOWERELECTRONICS.png";
 import logoGTE from "@/assets/LOGOGTE.jpeg";
 import { useLanguage } from "@/lib/use-language";
+import DecorativeDivider from "@/components/shared/decorative-divider";
+
+function HomeSubtitle({ language }: { language: string }) {
+  const hi = "text-yellow-300 font-semibold";
+  if (language === "en") {
+    return (
+      <>
+        Leading the way towards{" "}
+        <span className={hi}>renewable energies</span> through{" "}
+        <span className={hi}>innovation</span> and{" "}
+        <span className={hi}>education</span>, aimed at building a clean and efficient future.
+      </>
+    );
+  }
+  return (
+    <>
+      Liderando el camino hacia las{" "}
+      <span className={hi}>energías renovables</span> a través de la{" "}
+      <span className={hi}>innovación</span> y{" "}
+      <span className={hi}>educación</span>, orientadas a construir un futuro limpio y eficiente.
+    </>
+  );
+}
 
 const partnerLogos = [
   logoGE, logoUPV, logoPowerCo, logoWhiteTeam, logoFord,
@@ -25,7 +48,7 @@ const partnerLogos = [
 ];
 
 export default function Home() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
 
   const features = [
     { title: t('home.features.innovation.title'),     description: t('home.features.innovation.description'),     image: foto2 },
@@ -34,10 +57,10 @@ export default function Home() {
   ];
 
   const stats = [
-    { value: "20", label: t('home.stats.engineers') },
-    { value: "2",  label: t('home.stats.prototypes') },
-    { value: "3+", label: t('home.stats.years') },
-    { value: "1",  label: t('home.stats.mission') },
+    { value: "24",   label: t('home.stats.engineers') },
+    { value: "2",    label: t('home.stats.prototypes') },
+    { value: "3+",   label: t('home.stats.years') },
+    { value: "100%", label: language === 'en' ? 'Renewable' : 'Renovable' },
   ];
 
   return (
@@ -69,14 +92,12 @@ export default function Home() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-5xl font-black text-yellow-400 tracking-tight -mt-6 mb-3"
+            className="text-3xl sm:text-5xl font-black text-yellow-400 tracking-tight -mt-6 mb-3"
           >
             {t('home.title')}
           </motion.h2>
-          <div className="flex items-center justify-center gap-2 mb-6">
-            <div className="h-[3px] w-10 rounded-full bg-yellow-500" />
-            <div className="h-[3px] w-5 rounded-full bg-yellow-500/50" />
-            <div className="h-[3px] w-2 rounded-full bg-yellow-500/25" />
+          <div className="mb-6">
+            <DecorativeDivider centered />
           </div>
           <motion.p
             initial={{ opacity: 0, y: 10 }}
@@ -84,8 +105,9 @@ export default function Home() {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
             className="text-lg md:text-xl font-light text-white/60 max-w-3xl mx-auto leading-relaxed"
-            dangerouslySetInnerHTML={{ __html: t("home.subtitle") }}
-          />
+          >
+            <HomeSubtitle language={language} />
+          </motion.p>
         </div>
 
         <div className="container mx-auto mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 px-6">
@@ -103,6 +125,7 @@ export default function Home() {
                   <img
                     src={feature.image}
                     alt={feature.title}
+                    loading="lazy"
                     className="w-full h-full object-cover brightness-75 group-hover:brightness-90 group-hover:scale-105 transition-all duration-500"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
@@ -156,11 +179,12 @@ export default function Home() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7 }}
-              className="relative h-[420px] rounded-2xl overflow-hidden group ring-1 ring-white/10 hover:ring-yellow-500/30 transition-all duration-500"
+              className="relative h-[280px] sm:h-[420px] rounded-2xl overflow-hidden group ring-1 ring-white/10 hover:ring-yellow-500/30 transition-all duration-500"
             >
               <img
                 src={teamPhoto}
                 alt="Helios Race Team"
+                loading="lazy"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 brightness-75"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
@@ -178,13 +202,11 @@ export default function Home() {
               viewport={{ once: true }}
               transition={{ duration: 0.7 }}
             >
-              <h2 className="text-4xl md:text-5xl font-black text-white mb-4 leading-tight tracking-tight">
+              <h2 className="text-3xl md:text-5xl font-black text-white mb-4 leading-tight tracking-tight">
                 {t('home.team.title')}
               </h2>
-              <div className="flex items-center gap-2 mb-6">
-                <div className="h-[3px] w-10 rounded-full bg-yellow-500" />
-                <div className="h-[3px] w-5 rounded-full bg-yellow-500/50" />
-                <div className="h-[3px] w-2 rounded-full bg-yellow-500/25" />
+              <div className="mb-6">
+                <DecorativeDivider />
               </div>
               <p className="text-white/55 text-lg leading-relaxed mb-8">
                 {t('home.team.description')}

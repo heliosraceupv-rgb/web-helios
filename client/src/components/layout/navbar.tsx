@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { useLanguage } from "@/lib/use-language";
 import { ES, GB } from 'country-flag-icons/react/3x2';
-import logo from "@/assets/HeliosLogoBlancoSolo.png";
+import logo from "@/assets/logos_blanco_transparente-02.png";
 
 const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
 
@@ -40,11 +40,11 @@ export default function Navbar() {
         ? "bg-black/60 backdrop-blur-xl border-b border-white/10 shadow-lg shadow-black/30"
         : "bg-transparent border-b border-transparent"
     }`}>
-      <div className="container flex h-[74px] items-center justify-between">
+      <div className="container flex h-[74px] sm:h-[90px] items-center justify-between">
 
         {/* Logo */}
         <Link href="/" className="flex items-center space-x-3" onClick={scrollToTop}>
-          <img src={logo} alt="HeliosRace UPV Logo" className="h-[60px] w-auto" />
+          <img src={logo} alt="HeliosRace UPV Logo" className="h-[60px] sm:h-[80px] md:h-[100px] w-auto" />
         </Link>
 
         {/* Mobile */}

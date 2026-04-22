@@ -1,6 +1,6 @@
 import { SiInstagram, SiLinkedin, SiYoutube } from "react-icons/si";
 import { Link } from "wouter";
-import logo from "@/assets/HeliosLogoBlancoSolo.png";
+import logo from "@/assets/logos_blanco_transparente-02.png";
 
 const navColumns = [
   {
@@ -33,10 +33,10 @@ export default function Footer() {
   return (
     <footer className="bg-[#0a0c10] border-t border-white/5 text-white">
       <div className="container py-14">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
 
           {/* Brand */}
-          <div className="md:col-span-2">
+          <div className="col-span-2 md:col-span-2">
             <Link href="/" onClick={scrollToTop}>
               <img src={logo} alt="Helios Race UPV" className="h-14 w-auto mb-4 opacity-90 hover:opacity-100 transition-opacity duration-300" />
             </Link>

@@ -17,6 +17,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useLanguage } from "@/lib/use-language";
+import PageHeader from "@/components/shared/page-header";
 
 export default function Contact() {
   const { t } = useLanguage();
@@ -42,38 +43,14 @@ export default function Contact() {
   return (
     <div className="min-h-screen bg-[#0d0f14]">
 
-      {/* Page header */}
-      <div className="relative overflow-hidden py-20">
-        <div className="absolute inset-0 dot-grid opacity-40 pointer-events-none" />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#0d0f14] pointer-events-none" />
-        <div className="container relative z-10 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
-          >
-            <h1 className="text-5xl font-black text-white mb-4 tracking-tight">
-              {t("contact.title")}
-            </h1>
-            <div className="flex items-center justify-center gap-2 mb-6">
-              <div className="h-[3px] w-10 rounded-full bg-yellow-500" />
-              <div className="h-[3px] w-5 rounded-full bg-yellow-500/50" />
-              <div className="h-[3px] w-2 rounded-full bg-yellow-500/25" />
-            </div>
-            <p className="text-white/50 max-w-xl mx-auto text-base leading-relaxed whitespace-pre-line">
-              {t("contact.subtitle")}
-            </p>
-          </motion.div>
-        </div>
-      </div>
+      <PageHeader title={t("contact.title")} subtitle={t("contact.subtitle")} centered />
 
-      {/* Form card */}
       <div className="container pb-24 max-w-2xl">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="bg-white/5 border border-white/10 rounded-2xl p-8 backdrop-blur-sm"
+          className="bg-white/5 border border-white/10 rounded-2xl p-6 sm:p-8 backdrop-blur-sm"
         >
           <Form {...form}>
             <form
@@ -85,15 +62,15 @@ export default function Contact() {
                 name="name"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-white/70 font-medium">{t("contact.nameLabel")}</FormLabel>
+                    <FormLabel className="text-white/80 font-medium">{t("contact.nameLabel")}</FormLabel>
                     <FormControl>
                       <Input
                         placeholder={t("contact.namePlaceholder")}
-                        className="bg-white/5 border-white/10 text-white placeholder:text-white/30 focus:border-yellow-500/50 focus:ring-yellow-500/20 transition-colors duration-200"
+                        className="bg-white/5 border-white/15 text-white placeholder:text-white/40 focus:border-yellow-500/50 focus:ring-yellow-500/20 transition-colors duration-200"
                         {...field}
                       />
                     </FormControl>
-                    <FormMessage />
+                    <FormMessage className="text-red-400 text-xs mt-1" />
                   </FormItem>
                 )}
               />
@@ -103,15 +80,15 @@ export default function Contact() {
                 name="email"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-white/70 font-medium">{t("contact.emailLabel")}</FormLabel>
+                    <FormLabel className="text-white/80 font-medium">{t("contact.emailLabel")}</FormLabel>
                     <FormControl>
                       <Input
                         placeholder={t("contact.emailPlaceholder")}
-                        className="bg-white/5 border-white/10 text-white placeholder:text-white/30 focus:border-yellow-500/50 focus:ring-yellow-500/20 transition-colors duration-200"
+                        className="bg-white/5 border-white/15 text-white placeholder:text-white/40 focus:border-yellow-500/50 focus:ring-yellow-500/20 transition-colors duration-200"
                         {...field}
                       />
                     </FormControl>
-                    <FormMessage />
+                    <FormMessage className="text-red-400 text-xs mt-1" />
                   </FormItem>
                 )}
               />
@@ -121,15 +98,15 @@ export default function Contact() {
                 name="message"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-white/70 font-medium">{t("contact.messageLabel")}</FormLabel>
+                    <FormLabel className="text-white/80 font-medium">{t("contact.messageLabel")}</FormLabel>
                     <FormControl>
                       <Textarea
                         placeholder={t("contact.messagePlaceholder")}
-                        className="min-h-[150px] bg-white/5 border-white/10 text-white placeholder:text-white/30 focus:border-yellow-500/50 focus:ring-yellow-500/20 transition-colors duration-200 resize-none"
+                        className="min-h-[150px] bg-white/5 border-white/15 text-white placeholder:text-white/40 focus:border-yellow-500/50 focus:ring-yellow-500/20 transition-colors duration-200 resize-none"
                         {...field}
                       />
                     </FormControl>
-                    <FormMessage />
+                    <FormMessage className="text-red-400 text-xs mt-1" />
                   </FormItem>
                 )}
               />
@@ -144,6 +121,21 @@ export default function Contact() {
               </Button>
             </form>
           </Form>
+        </motion.div>
+
+        {/* Contacto directo */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="mt-6 text-center"
+        >
+          <p className="text-white/40 text-sm">
+            O escríbenos directamente a{" "}
+            <a href="mailto:heliosraceupv@gmail.com" className="text-yellow-400 hover:text-yellow-300 transition-colors duration-200 underline underline-offset-2">
+              heliosraceupv@gmail.com
+            </a>
+          </p>
         </motion.div>
       </div>
     </div>

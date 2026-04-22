@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { motion } from "framer-motion";
 import Slider from "react-slick";
 import { useLanguage } from "@/lib/use-language";
-import SectionHeader from "@/components/shared/section-header";
+import PageHeader from "@/components/shared/page-header";
 import logo from "@/assets/enseñarniño.jpg";
 import logo2 from "@/assets/trespose.jpg";
 import logo3 from "@/assets/logo_blue.png";
@@ -28,35 +28,13 @@ export default function Join() {
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 3000,
+    arrows: false,
   };
 
   return (
     <div className="min-h-screen bg-[#0d0f14]">
 
-      {/* Page header */}
-      <div className="relative overflow-hidden py-20">
-        <div className="absolute inset-0 dot-grid opacity-40 pointer-events-none" />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#0d0f14] pointer-events-none" />
-        <div className="container relative z-10 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
-          >
-            <h1 className="text-5xl font-black text-white mb-4 tracking-tight">
-              {t('join.title')}
-            </h1>
-            <div className="flex items-center justify-center gap-2 mb-6">
-              <div className="h-[3px] w-10 rounded-full bg-yellow-500" />
-              <div className="h-[3px] w-5 rounded-full bg-yellow-500/50" />
-              <div className="h-[3px] w-2 rounded-full bg-yellow-500/25" />
-            </div>
-            <p className="text-white/50 max-w-2xl mx-auto text-base leading-relaxed">
-              {t('join.subtitle')}
-            </p>
-          </motion.div>
-        </div>
-      </div>
+      <PageHeader title={t('join.title')} subtitle={t('join.subtitle')} centered />
 
       <div className="container pb-24 max-w-4xl">
 
@@ -65,15 +43,16 @@ export default function Join() {
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="rounded-2xl overflow-hidden ring-1 ring-white/10 mb-16"
+          className="rounded-2xl overflow-hidden ring-1 ring-white/10 mb-12"
         >
           <Slider {...settings}>
             {[logo, logo2, logo3].map((src, i) => (
               <div key={i}>
                 <img
                   src={src}
-                  alt={`Team ${i + 1}`}
-                  className="w-full h-[420px] object-cover"
+                  alt={`Helios Race UPV equipo ${i + 1}`}
+                  loading="lazy"
+                  className="w-full h-[200px] sm:h-[320px] md:h-[420px] object-cover"
                 />
               </div>
             ))}
@@ -89,12 +68,20 @@ export default function Join() {
           className="bg-white/5 border border-white/10 rounded-2xl overflow-hidden"
         >
           <div
-            style={{ width: "100%", height: "600px" }}
+            style={{ width: "100%", height: "clamp(420px, 80vh, 700px)" }}
             data-fillout-id="bBPejs9YBKus"
             data-fillout-embed-type="standard"
             data-fillout-inherit-parameters
             data-fillout-dynamic-resize
           />
+          <noscript>
+            <div className="p-8 text-center text-white/60">
+              <p>Por favor habilita JavaScript para ver el formulario de inscripción.</p>
+              <a href="mailto:heliosraceupv@gmail.com" className="text-yellow-400 underline mt-2 inline-block">
+                O envíanos un email directamente
+              </a>
+            </div>
+          </noscript>
         </motion.div>
       </div>
     </div>
