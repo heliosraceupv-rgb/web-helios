@@ -104,7 +104,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.45 }}
-            className="text-base md:text-lg mb-8 text-white/60 leading-relaxed"
+            className="text-base md:text-lg mb-8 text-white/70 leading-relaxed"
           >
             <HeroSubtitle language={language} />
           </motion.p>

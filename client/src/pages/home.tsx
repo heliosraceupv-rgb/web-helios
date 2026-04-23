@@ -155,8 +155,7 @@ export default function Home() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="text-center"
               >
-                <p className="text-5xl md:text-6xl font-black text-yellow-400 mb-2 leading-none"
-                   style={{ textShadow: "0 0 40px rgba(234,179,8,0.25)" }}>
+                <p className="text-5xl md:text-6xl font-black text-yellow-400 mb-2 leading-none text-glow-yellow">
                   {stat.value}
                 </p>
                 <p className="text-white/40 text-sm font-semibold uppercase tracking-widest">

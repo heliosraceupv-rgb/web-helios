@@ -31,14 +31,15 @@ const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
 
 export default function Footer() {
   return (
-    <footer className="bg-[#0a0c10] border-t border-white/5 text-white">
+    <footer className="relative bg-[#0a0c10] border-t border-white/5 text-white">
+      <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-yellow-500/30 to-transparent pointer-events-none" />
       <div className="container py-14">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
 
           {/* Brand */}
           <div className="col-span-2 md:col-span-2">
             <Link href="/" onClick={scrollToTop}>
-              <img src={logo} alt="Helios Race UPV" className="h-14 w-auto mb-4 opacity-90 hover:opacity-100 transition-opacity duration-300" />
+              <img src={logo} alt="Helios Race UPV" className="h-20 w-auto mb-5 opacity-90 hover:opacity-100 hover:drop-shadow-[0_0_18px_rgba(234,179,8,0.30)] transition-all duration-300" />
             </Link>
             <p className="text-white/40 text-sm leading-relaxed max-w-xs">
               El equipo de carreras solares de la Universitat Politècnica de València, impulsando la movilidad sostenible del futuro.

@@ -35,16 +35,18 @@ export default function Navbar() {
   }, []);
 
   return (
-    <header className={`sticky top-0 z-50 w-full transition-all duration-500 ${
+    <header className={`relative sticky top-0 z-50 w-full transition-all duration-500 ${
       scrolled
-        ? "bg-black/60 backdrop-blur-xl border-b border-white/10 shadow-lg shadow-black/30"
+        ? "bg-black/65 backdrop-blur-xl border-b border-white/10 shadow-xl shadow-black/40"
         : "bg-transparent border-b border-transparent"
     }`}>
-      <div className="container flex h-[74px] sm:h-[90px] items-center justify-between">
+      {/* Accent line at top */}
+      <div className={`absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-yellow-500/50 to-transparent transition-opacity duration-500 pointer-events-none ${scrolled ? "opacity-100" : "opacity-0"}`} />
+      <div className="container flex h-[88px] sm:h-[108px] md:h-[120px] items-center justify-between">
 
         {/* Logo */}
         <Link href="/" className="flex items-center space-x-3" onClick={scrollToTop}>
-          <img src={logo} alt="HeliosRace UPV Logo" className="h-[60px] sm:h-[80px] md:h-[100px] w-auto" />
+          <img src={logo} alt="HeliosRace UPV Logo" className="h-[76px] sm:h-[96px] md:h-[116px] w-auto drop-shadow-[0_0_14px_rgba(234,179,8,0.18)] hover:drop-shadow-[0_0_22px_rgba(234,179,8,0.40)] transition-all duration-300" />
         </Link>
 
         {/* Mobile */}

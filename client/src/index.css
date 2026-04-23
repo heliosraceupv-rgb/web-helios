@@ -4,6 +4,15 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  scroll-behavior: smooth;
+}
+
+::selection {
+  background-color: rgba(234, 179, 8, 0.30);
+  color: #fff;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -138,7 +147,34 @@
 
 /* Gradient card border on hover */
 .card-glow:hover {
-  box-shadow: 0 0 24px rgba(234, 179, 8, 0.12), 0 8px 32px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 28px rgba(234, 179, 8, 0.14), 0 8px 40px rgba(0, 0, 0, 0.35);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0d0f14;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(234, 179, 8, 0.30);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(234, 179, 8, 0.55);
+}
+
+/* Accessible focus ring */
+:focus-visible {
+  outline: 2px solid rgba(234, 179, 8, 0.70);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Yellow text glow utility */
+.text-glow-yellow {
+  text-shadow: 0 0 32px rgba(234, 179, 8, 0.35), 0 0 8px rgba(234, 179, 8, 0.15);
 }
 
 .background-fade::before,
