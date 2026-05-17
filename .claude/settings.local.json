@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git *)",
+      "Bash(cp /mnt/c/Users/ennif/Documents/Heliosweb/web-helios-main/web-helios-main/client/public/robots.txt /mnt/c/Users/ennif/Documents/heliosweb2/web-helios/client/public/robots.txt)",
+      "Bash(cp /mnt/c/Users/ennif/Documents/Heliosweb/web-helios-main/web-helios-main/client/public/sitemap.xml /mnt/c/Users/ennif/Documents/heliosweb2/web-helios/client/public/sitemap.xml)",
+      "Bash(cp /mnt/c/Users/ennif/Documents/Heliosweb/web-helios-main/web-helios-main/client/public/og-image.jpg /mnt/c/Users/ennif/Documents/heliosweb2/web-helios/client/public/og-image.jpg)"
+    ]
+  }
+}

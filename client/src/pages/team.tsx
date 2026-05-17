@@ -1,4 +1,5 @@
 import { useState } from "react";
+import SEO from "@/components/shared/seo";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/lib/use-language";
 import PageHeader from "@/components/shared/page-header";
@@ -200,6 +201,11 @@ export default function Team() {
 
   return (
     <div className="min-h-screen bg-[#0d0f14] text-white">
+      <SEO
+        title="Nuestro Equipo | Helios Race UPV"
+        description="Conoce a los miembros de Helios Race UPV: estudiantes de la UPV apasionados por la ingeniería, la competición y la movilidad sostenible."
+        path="/team"
+      />
 
       <PageHeader title={t('team.title')} subtitle={t('team.subtitle')} centered />
 

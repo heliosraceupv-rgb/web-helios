@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import SEO from "@/components/shared/seo";
 import { motion } from "framer-motion";
 import Slider from "react-slick";
 import { useLanguage } from "@/lib/use-language";
@@ -33,6 +34,11 @@ export default function Join() {
 
   return (
     <div className="min-h-screen bg-[#0d0f14]">
+      <SEO
+        title="Únete al Equipo | Helios Race UPV"
+        description="¿Eres estudiante de la UPV? Únete a Helios Race UPV y forma parte de un equipo universitario de competición pionero en movilidad sostenible."
+        path="/join"
+      />
 
       <PageHeader title={t('join.title')} subtitle={t('join.subtitle')} centered />
 

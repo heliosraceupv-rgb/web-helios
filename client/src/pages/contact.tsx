@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import SEO from "@/components/shared/seo";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation } from "@tanstack/react-query";
@@ -42,6 +43,11 @@ export default function Contact() {
 
   return (
     <div className="min-h-screen bg-[#0d0f14]">
+      <SEO
+        title="Contacto | Helios Race UPV"
+        description="Contacta con Helios Race UPV para consultas, colaboraciones y patrocinios. Estamos en la Universitat Politècnica de València."
+        path="/contact"
+      />
 
       <PageHeader title={t("contact.title")} subtitle={t("contact.subtitle")} centered />
 

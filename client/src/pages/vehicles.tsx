@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import SEO from "@/components/shared/seo";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import CocheUno from "@/assets/prototipo1.jpg";
@@ -29,6 +30,11 @@ export default function Vehicles() {
 
   return (
     <div className="min-h-screen bg-[#0d0f14]">
+      <SEO
+        title="Nuestros Vehículos | Helios Race UPV"
+        description="Descubre los vehículos de competición diseñados y fabricados por Helios Race UPV, el equipo de la Universitat Politècnica de València."
+        path="/vehicles"
+      />
 
       <PageHeader
         title={t('vehicles.title')}

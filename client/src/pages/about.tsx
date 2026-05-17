@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import SEO from "@/components/shared/seo";
 import { useState } from "react";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
@@ -27,6 +28,11 @@ export default function About() {
 
   return (
     <div className="min-h-screen bg-[#0d0f14]">
+      <SEO
+        title="Sobre Nosotros | Helios Race UPV"
+        description="Conoce la historia, misión y valores de Helios Race UPV, equipo de competición de la Universitat Politècnica de València."
+        path="/about"
+      />
 
       <PageHeader title={t('about.title')} subtitle={t('about.subtitle')} />
 

@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import SEO from "@/components/shared/seo";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
@@ -65,6 +66,11 @@ export default function Home() {
 
   return (
     <div className="bg-[#0d0f14] text-white">
+      <SEO
+        title="Helios Race UPV | Equipo de competición de la Universitat Politècnica de València"
+        description="Helios Race UPV, equipo universitario de competición de la UPV. Diseñamos y fabricamos vehículos propios. Liderando la movilidad sostenible del futuro."
+        path="/"
+      />
 
       {/* Hero */}
       <div className="w-full">

@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import SEO from "@/components/shared/seo";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 import logoUPV from "@/assets/LOGOUPV.png";
@@ -36,6 +37,11 @@ export default function Partners() {
 
   return (
     <div className="min-h-screen bg-[#0d0f14]">
+      <SEO
+        title="Patrocinadores | Helios Race UPV"
+        description="Empresas e instituciones que confían en Helios Race UPV. Únete como patrocinador y forma parte de la movilidad sostenible del futuro."
+        path="/partners"
+      />
 
       <PageHeader
         title={t('partners.title')}
